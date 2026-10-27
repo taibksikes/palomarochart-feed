@@ -60,6 +60,7 @@ def main():
                 "brand": "Paloma Rocha",
                 "product_type": "Available Works",
                 "condition": "new",
+                "google_product_category": "Home & Garden > Decor > Artwork > Paintings",
             })
     rows.sort(key=lambda r: r["link"])
     if problems:
@@ -67,7 +68,7 @@ def main():
     if len(rows) < 40:
         print(f"ABORT: only {len(rows)} rows, keeping previous feed")
         sys.exit(1)
-    fields = ["id","title","description","link","image_link","price","availability","brand","product_type","condition"]
+    fields = ["id","title","description","link","image_link","price","availability","brand","product_type","condition","google_product_category"]
     with open("feed.csv", "w", newline="") as f:
         w = csv.DictWriter(f, fieldnames=fields); w.writeheader(); w.writerows(rows)
     print(f"feed.csv written: {len(rows)} rows")
